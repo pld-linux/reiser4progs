@@ -1,0 +1,11 @@
+--- reiser4progs-0.4.20/libreiser4.m4.orig	2003-06-12 16:04:06.000000000 +0200
++++ reiser4progs-0.4.20/libreiser4.m4	2003-12-28 13:56:01.985586216 +0100
+@@ -11,7 +11,7 @@
+ dnl Adds the required libraries to $REISER4_LIBS and does an
+ dnl AC_SUBST(REISER4_LIBS)
+ 
+-AC_DEFUN(AC_CHECK_LIBREISER4,
++AC_DEFUN([AC_CHECK_LIBREISER4],
+ [
+ 
+ dnl save LIBS
