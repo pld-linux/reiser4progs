@@ -1,5 +1,4 @@
-%define		snapshot	2003.12.23
-%define		_snap    %(echo %{snapshot} | tr -d .)
+%define		snapshot	2004.03.26
 
 Summary:	Utilities belonging to the Reiser4 filesystem
 Summary(pl):	Narzêdzia dla systemu plików Reiser4
@@ -7,26 +6,25 @@ Summary(pt_BR):	Este pacote contém os utilitários para manipulação do sistema de
 Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ ÒÏÂÏÔÙ Ú ÆÁÊÌÏ×ÏÀ ÓÉÓÔÅÍÏÀ Reiser4
 Summary(ru):	õÔÉÌÉÔÙ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÏ×ÏÊ ÓÉÓÔÅÍÏÊ Reiser4
 Name:		reiser4progs
-Version:	0.4.20
+Version:	0.5.3
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://www.namesys.com/snapshots/%{snapshot}/%{name}-%{version}.tar.gz
-# Source0-md5:	61841a79de2bbfee90e08e84469ef132
+# Source0-md5:	8a14be41aafba9a55a04d3a31cd107e5
 Patch0:		%{name}-acfix.patch
 Patch1:		%{name}-opt.patch
-Patch2:		%{name}-destdir_fix.patch
-Patch3:		%{name}-am18.patch
+Patch2:		%{name}-am18.patch
 URL:		http://www.reiserfs.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libaal-devel >= 0.4.15
+BuildRequires:	libaal-devel >= 0.5.0
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	libuuid-devel
 BuildRequires:	readline-devel
-Requires:	libaal >= 0.4.15
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Requires:	libaal >= 0.5.0
 Obsoletes:	reiserfs-utils
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir	/sbin
 
@@ -68,8 +66,8 @@ arquivos Reiser4.
 Summary:	Header files for reiser4progs libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek reiser4progs
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
-Requires:	libaal-devel >= 0.4.15
+Requires:	%{name} = %{version}-%{release}
+Requires:	libaal-devel >= 0.5.0
 
 %description devel
 Header files for reiser4progs libraries.
@@ -81,7 +79,7 @@ Pliki nag³ówkowe bibliotek reiser4progs.
 Summary:	reiser4progs static libraries
 Summary(pl):	Statyczne biblioteki reiser4progs
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 reiser4progs static libraries.
@@ -94,7 +92,6 @@ Statyczne biblioteki reiser4progs.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__libtoolize}
