@@ -131,8 +131,8 @@
  
  OLD_LIBS="$LIBS"
  LIBS=""
--AC_CHECK_LIBAAL(aal, 0.4.5, ,exit)
-+AC_CHECK_LIBAAL(0.4.5, LIBS="-laal", [AC_MSG_ERROR([libaal not found])])
+-AC_CHECK_LIBAAL(aal, 0.4.7, ,exit)
++AC_CHECK_LIBAAL(0.4.7, LIBS="-laal", [AC_MSG_ERROR([libaal not found])])
  AAL_LIBS="$LIBS"
  LIBS="$OLD_LIBS"
  
