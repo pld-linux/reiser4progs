@@ -1,7 +1,6 @@
-diff -burN reiser4progs-0.4.11.orig/configure.in reiser4progs-0.4.11/configure.in
---- reiser4progs-0.4.11.orig/configure.in	2003-08-13 21:01:49.292634280 +0200
-+++ reiser4progs-0.4.11/configure.in	2003-08-13 21:06:56.010006152 +0200
-@@ -41,77 +41,6 @@
+--- reiser4progs-0.4.20/configure.in.orig	2003-12-23 10:03:27.000000000 +0100
++++ reiser4progs-0.4.20/configure.in	2003-12-28 13:52:26.714312424 +0100
+@@ -41,80 +41,6 @@
  AC_DEFINE_UNQUOTED(LIBREISER4_MAX_INTERFACE_VERSION, $LIBREISER4_BINARY_AGE)
  AC_DEFINE_UNQUOTED(LIBREISER4_MIN_INTERFACE_VERSION, $LIBREISER4_INTERFACE_AGE)
  
@@ -10,20 +9,20 @@ diff -burN reiser4progs-0.4.11.orig/configure.in reiser4progs-0.4.11/configure.i
 -[
 -
 -AC_CHECK_LIB($1, aal_device_open, ,
--    [AC_MSG_ERROR([lib$1 not found; install libaal available at \
+-	[AC_MSG_ERROR([lib$1 not found; install libaal available at \
 -http://www.namesys.com/pub/libaal])]
 -$4)
 -
 -# Check for headers and library
 -AC_CHECK_HEADER(aal/aal.h, ,
--    [AC_MSG_ERROR([<aal/aal.h> not found])] 
+-    	[AC_MSG_ERROR([<aal/aal.h> not found])] 
 -$4)
 -
 -AC_MSG_CHECKING(for lib$1 version = $2)
 -
 -AC_TRY_LINK_FUNC(libaal_version,,
--    AC_MSG_RESULT(failed)
--    AC_MSG_ERROR([lib$1 can't execute test]))
+-    	AC_MSG_RESULT(failed)
+-    	AC_MSG_ERROR([lib$1 can't execute test]))
 -
 -# Get major, minor, and micro version from arg MINIMUM-VERSION
 -libaal_config_major_version=`echo $2 | \
@@ -40,100 +39,63 @@ diff -burN reiser4progs-0.4.11.orig/configure.in reiser4progs-0.4.11/configure.i
 -#include <aal/aal.h>
 -
 -int main() {
--    const char *version;    
--    int major, minor, micro;
+-    	const char *version;    
+-    	int major, minor, micro;
 -	
--    if (!(version = libaal_version()))
--	exit(1);
+-    	if (!(version = libaal_version()))
+-		exit(1);
 -		
--    if (sscanf(version, "%d.%d.%d", &major, &minor, &micro) != 3) {
--	printf("%s, bad version string\n", version);
--	exit(1);
--    }
+-    	if (sscanf(version, "%d.%d.%d", &major, &minor, &micro) != 3) {
+-		printf("%s, bad version string\n", version);
+-		exit(1);
+-    	}
 -	
--    if (((major == $libaal_config_major_version) && 
--        (minor == $libaal_config_minor_version) && 
--        (micro >= $libaal_config_micro_version))) 
--    {
--	return 0;
--    }
+-    	if ((major >= $libaal_config_major_version) &&
+-		((major == $libaal_config_major_version) && 
+-		(minor >= $libaal_config_minor_version)) &&
+-		((major == $libaal_config_major_version) && 
+-		(minor == $libaal_config_minor_version) && 
+-		(micro >= $libaal_config_micro_version))) 
+-    	{
+-		return 0;
+-    	}
 -
--    printf("\nAn old version of libaal (%s) was found.\n",
--	version);
+-    	printf("\nAn old version of libaal (%s) was found.\n",
+-		version);
 -
--    printf("You need a version of libaal newer than %d.%d.%d.\n", 
--	$libaal_config_major_version, $libaal_config_minor_version, 
--	$libaal_config_micro_version);
+-    	printf("You need a version of libaal newer than %d.%d.%d.\n", 
+-		$libaal_config_major_version, $libaal_config_minor_version, 
+-		$libaal_config_micro_version);
 -
--    printf("You can get it at ftp://ftp.namesys.com/pub/libaal\n");
--    return 1;
+-    	printf("You can get it at ftp://ftp.namesys.com/pub/libaal\n");
+-    	return 1;
 -}
 -], 
--    AC_MSG_RESULT(yes),
--    AC_MSG_RESULT(no) ; $4,
--    [echo $ac_n "cross compiling; assumed OK... $ac_c"])
+-    	AC_MSG_RESULT(yes),
+-    	AC_MSG_RESULT(no) ; $4,
+-    	[echo $ac_n "cross compiling; assumed OK... $ac_c"])
 -
 -# Execute ACTION-IF-FOUND
 -$3])
 -
  AC_ARG_WITH(libaal,
-     [  --with-libaal=<dir>      prefix of where libaal was installed], ,
+ 	[  --with-libaal            prefix of where libaal was installed], ,
  )
-@@ -157,10 +86,10 @@
- 	LIBS=""
- 	AC_SEARCH_LIBS(tgetent, ncurses curses termcap termlib,
- 		PROGS_LIBS="$PROGS_LIBS $LIBS",
--		AC_MSG_WARN(
-+		[AC_MSG_WARN([
- termcap could not be found which is required for the
- --with-readline option (which is enabled by default).
--		)
-+		])]
- 		with_readline=no
- 	)
- 	LIBS="$OLD_LIBS"
-@@ -171,9 +100,9 @@
-     OLD_LIBS="$LIBS"
-     LIBS=""
-     AC_CHECK_LIB(readline, readline, ,
--	    AC_MSG_WARN(
-+	    [AC_MSG_WARN([
- GNU Readline could not be found which is required for the --with-readline
--	    )
-+	    ])]
- 	    with_readline=no
-     )
-     PROGS_LIBS="$PROGS_LIBS $LIBS"
-@@ -280,19 +209,19 @@
- 
- if test "$with_uuid" = yes; then
-     AC_CHECK_HEADERS(uuid/uuid.h, ,
--	AC_MSG_WARN(
-+	[AC_MSG_WARN([
- The headers for libuuid could not be found which
- are required for the --with-uuid option.
--	)
-+	])]
-     )
- fi
- 
- if test "$with_readline" = yes; then
-     AC_CHECK_HEADERS(readline/readline.h readline/history.h, ,
--	AC_MSG_WARN(
-+	[AC_MSG_WARN([
- The headers for GNU Readline could not be found which
- are required for the --with-readline option.
--	)
-+	])]
-     )
- fi
- 
-@@ -355,7 +284,7 @@
- AC_SUBST(LIBREISER4_LIBS)
+@@ -466,7 +392,7 @@
+ ])
  
  OLD_LIBS="$LIBS"
--AC_CHECK_LIBAAL(aal, 0.4.9, ,exit)
-+AC_CHECK_LIBAAL(0.4.9, LIBS="-laal", [AC_MSG_ERROR([libaal not found])])
+-AC_CHECK_LIBAAL(aal, 0.4.15, ,exit)
++AC_CHECK_LIBAAL(0.4.15, [LIBS="-laal"],exit)
  AAL_LIBS="$LIBS"
  LIBS="$OLD_LIBS"
+ 
+@@ -474,7 +400,7 @@
+ 
+ if test x$enable_stand_alone = xyes; then
+     	OLD_LIBS="$LIBS"
+-    	AC_CHECK_LIBAAL(aal-alone, 0.4.15, ,exit)
++    	AC_CHECK_LIBAAL(0.4.15, [LIBS="-laal"],exit)
+     	AAL_ALONE_LIBS="$LIBS"
+     	LIBS="$OLD_LIBS"
  

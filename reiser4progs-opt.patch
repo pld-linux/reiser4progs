@@ -1,18 +1,31 @@
-diff -burN reiser4progs-0.4.11.orig/configure.in reiser4progs-0.4.11/configure.in
---- reiser4progs-0.4.11.orig/configure.in	2003-08-13 21:01:49.292634280 +0200
-+++ reiser4progs-0.4.11/configure.in	2003-08-13 21:02:44.233282032 +0200
-@@ -420,14 +420,6 @@
- -DENABLE_SYMLINKS -DENABLE_R5_HASH -DENABLE_FNV1_HASH -DENABLE_RUPASOV_HASH \
- -DENABLE_TEA_HASH -DENABLE_LARGE_KEYS -DENABLE_SHORT_KEYS"
+--- reiser4progs-0.4.20/configure.in.orig	2003-12-28 13:53:23.259716216 +0100
++++ reiser4progs-0.4.20/configure.in	2003-12-28 13:54:09.909624352 +0100
+@@ -46,12 +46,11 @@
+ )
+ 
+ LIBS=""
+-CFLAGS=""
+ 
+ if test x$with_libaal != x; then
+     	LIBS="-L$with_libaal/lib"
+ 	LDFLAGS="-L$with_libaal/lib"
+-    	CFLAGS="-I$with_libaal/include"
++    	CFLAGS="$CFLAGS -I$with_libaal/include"
+     	CPPFLAGS="-I$with_libaal/include"
+ fi
+ 
+@@ -453,13 +452,7 @@
+ 
+ CFLAGS="$CFLAGS -W -Wall"
  
 -if test x$enable_debug = xyes; then
--    GENERIC_CFLAGS="$GENERIC_CFLAGS -O0 -g"
--    ALONE_CFLAGS="$ALONE_CFLAGS -O0 -g"
+-    	GENERIC_CFLAGS="$GENERIC_CFLAGS -O0 -g"
+-    	ALONE_CFLAGS="$ALONE_CFLAGS -O0 -g"
 -else
--    GENERIC_CFLAGS="$GENERIC_CFLAGS -O2"
--    ALONE_CFLAGS="$ALONE_CFLAGS -Os"
--fi
+-    	GENERIC_CFLAGS="$GENERIC_CFLAGS -O2"
+-    	ALONE_CFLAGS="$ALONE_CFLAGS -Os"
 -
- CFLAGS="$CFLAGS -W -Wall -Wno-unused"
- if test x$enable_Werror = xyes; then
-     CFLAGS="$CFLAGS -Werror"
++if test x$enable_debug != xyes; then
+     	if test x$uninitialized = xyes; then
+        		CFLAGS="$CFLAGS -Wuninitialized"
+     	fi
