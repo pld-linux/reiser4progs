@@ -12,6 +12,7 @@ Release:	1.%{_snap}.1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://thebsh.namesys.com/snapshots/%{snapshot}/%{name}-%{_snap}.tar.gz
+# Source0-md5:	eee25b1bbdfd0d3920716f09288bb7b0
 Patch0:		%{name}-acfix.patch
 Patch1:		%{name}-opt.patch
 URL:		http://www.reiserfs.org/
