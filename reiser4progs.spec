@@ -1,4 +1,4 @@
-%define		snapshot	2003.08.26
+%define		snapshot	2003.12.23
 %define		_snap    %(echo %{snapshot} | tr -d .)
 
 Summary:	Utilities belonging to the Reiser4 filesystem
@@ -7,22 +7,24 @@ Summary(pt_BR):	Este pacote contém os utilitários para manipulação do sistema de
 Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ ÒÏÂÏÔÙ Ú ÆÁÊÌÏ×ÏÀ ÓÉÓÔÅÍÏÀ Reiser4
 Summary(ru):	õÔÉÌÉÔÙ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÏ×ÏÊ ÓÉÓÔÅÍÏÊ Reiser4
 Name:		reiser4progs
-Version:	0.4.12
-Release:	0.%{_snap}
+Version:	0.4.20
+Release:	1
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://www.namesys.com/snapshots/%{snapshot}/%{name}-%{_snap}.tar.gz
-# Source0-md5:	dd28aeaa2abc1bcee96ff24b4b123748
+Source0:	http://www.namesys.com/snapshots/%{snapshot}/%{name}-%{version}.tar.gz
+# Source0-md5:	61841a79de2bbfee90e08e84469ef132
 Patch0:		%{name}-acfix.patch
 Patch1:		%{name}-opt.patch
 Patch2:		%{name}-destdir_fix.patch
+Patch3:		%{name}-am18.patch
 URL:		http://www.reiserfs.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libaal-devel >= 0.4.9
+BuildRequires:	libaal-devel >= 0.4.15
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	libuuid-devel
 BuildRequires:	readline-devel
+Requires:	libaal >= 0.4.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	reiserfs-utils
 
@@ -67,6 +69,7 @@ Summary:	Header files for reiser4progs libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek reiser4progs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	libaal-devel >= 0.4.15
 
 %description devel
 Header files for reiser4progs libraries.
@@ -91,9 +94,9 @@ Statyczne biblioteki reiser4progs.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
@@ -121,7 +124,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS BUGS COPYING CREDITS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%dir %{_libdir}/reiser4
 %{_mandir}/man*/*
 
 %files devel
