@@ -1,6 +1,6 @@
---- reiser4progs-0.4.20/configure.in.orig	2003-12-23 10:03:27.000000000 +0100
-+++ reiser4progs-0.4.20/configure.in	2003-12-28 13:52:26.714312424 +0100
-@@ -41,80 +41,6 @@
+--- reiser4progs-0.5.3/configure.in.orig	2004-03-26 17:10:30.000000000 +0100
++++ reiser4progs-0.5.3/configure.in	2004-04-11 00:53:47.393087536 +0200
+@@ -42,80 +42,6 @@
  AC_DEFINE_UNQUOTED(LIBREISER4_MAX_INTERFACE_VERSION, $LIBREISER4_BINARY_AGE)
  AC_DEFINE_UNQUOTED(LIBREISER4_MIN_INTERFACE_VERSION, $LIBREISER4_INTERFACE_AGE)
  
@@ -10,12 +10,12 @@
 -
 -AC_CHECK_LIB($1, aal_device_open, ,
 -	[AC_MSG_ERROR([lib$1 not found; install libaal available at \
--http://www.namesys.com/pub/libaal])]
+-http://www.namesys.com/snapshots])]
 -$4)
 -
 -# Check for headers and library
--AC_CHECK_HEADER(aal/aal.h, ,
--    	[AC_MSG_ERROR([<aal/aal.h> not found])] 
+-AC_CHECK_HEADER(aal/libaal.h, ,
+-    	[AC_MSG_ERROR([<aal/libaal.h> not found])] 
 -$4)
 -
 -AC_MSG_CHECKING(for lib$1 version = $2)
@@ -36,7 +36,7 @@
 -AC_TRY_RUN([
 -#include <stdio.h>
 -#include <stdlib.h>
--#include <aal/aal.h>
+-#include <aal/libaal.h>
 -
 -int main() {
 -    	const char *version;    
@@ -67,7 +67,7 @@
 -		$libaal_config_major_version, $libaal_config_minor_version, 
 -		$libaal_config_micro_version);
 -
--    	printf("You can get it at ftp://ftp.namesys.com/pub/libaal\n");
+-    	printf("You can get it at http://www.namesys.com/snapshots\n");
 -    	return 1;
 -}
 -], 
@@ -81,21 +81,21 @@
  AC_ARG_WITH(libaal,
  	[  --with-libaal            prefix of where libaal was installed], ,
  )
-@@ -466,7 +392,7 @@
+@@ -467,7 +393,7 @@
  ])
  
  OLD_LIBS="$LIBS"
--AC_CHECK_LIBAAL(aal, 0.4.15, ,exit)
-+AC_CHECK_LIBAAL(0.4.15, [LIBS="-laal"],exit)
+-AC_CHECK_LIBAAL(aal, 0.5.0, ,exit)
++AC_CHECK_LIBAAL(0.5.0, [LIBS="-laal"],exit)
  AAL_LIBS="$LIBS"
  LIBS="$OLD_LIBS"
  
-@@ -474,7 +400,7 @@
+@@ -475,7 +401,7 @@
  
  if test x$enable_stand_alone = xyes; then
      	OLD_LIBS="$LIBS"
--    	AC_CHECK_LIBAAL(aal-alone, 0.4.15, ,exit)
-+    	AC_CHECK_LIBAAL(0.4.15, [LIBS="-laal"],exit)
+-    	AC_CHECK_LIBAAL(aal-alone, 0.5.0, ,exit)
++    	AC_CHECK_LIBAAL(0.5.0, [LIBS="-laal"],exit)
      	AAL_ALONE_LIBS="$LIBS"
      	LIBS="$OLD_LIBS"
  
