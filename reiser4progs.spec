@@ -12,14 +12,14 @@ Release:	0.%{_snap}
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://thebsh.namesys.com/snapshots/%{snapshot}/%{name}-%{version}.tar.gz
-# Source0-md5:	5b5273998cc321be2fed902e91779a86
+# Source0-md5:	f10006b2c0156d9f7e4aff9e2ab74807
 Patch0:		%{name}-acfix.patch
 Patch1:		%{name}-opt.patch
 URL:		http://www.reiserfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	e2fsprogs-devel
-BuildRequires:	libaal-devel >= 0.4.7
+BuildRequires:	libaal-devel >= 0.4.9
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -87,7 +87,7 @@ Statyczne biblioteki reiser4progs.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
 %patch1 -p1
 
 %build
