@@ -1,5 +1,5 @@
-%define		snapshot	2003.05.28
-%define         snap    %(echo %{snapshot} | tr -d .)
+%define		snapshot	2003.06.14
+%define		_snap    %(echo %{snapshot} | tr -d .)
 
 Summary:	Utilities belonging to the Reiser4 filesystem
 Summary(pl):	Narzêdzia dla systemu plików Reiser4
@@ -7,19 +7,18 @@ Summary(pt_BR):	Este pacote contém os utilitários para manipulação do sistema de
 Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ ÒÏÂÏÔÙ Ú ÆÁÊÌÏ×ÏÀ ÓÉÓÔÅÍÏÀ Reiser4
 Summary(ru):	õÔÉÌÉÔÙ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÏ×ÏÊ ÓÉÓÔÅÍÏÊ Reiser4
 Name:		reiser4progs
-Version:	0.4.7
-Release:	%{snap}.1
+Version:	0.4.9
+Release:	1.%{_snap}.1
 License:	GPL v2
 Group:		Applications/System
-# Source0-md5:	8b0c930d5cb42d507ba351b110510ae7
-Source0:	http://thebsh.namesys.com/snapshots/%{snapshot}/%{name}-%{snap}.tar.gz
+Source0:	http://thebsh.namesys.com/snapshots/%{snapshot}/%{name}-%{_snap}.tar.gz
 Patch0:		%{name}-acfix.patch
 Patch1:		%{name}-opt.patch
 URL:		http://www.reiserfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	e2fsprogs-devel
-BuildRequires:	libaal-devel
+BuildRequires:	libaal-devel = 0.4.7
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
