@@ -1,5 +1,6 @@
---- reiser4progs-0.5.3/configure.in.orig	2004-03-26 17:10:30.000000000 +0100
-+++ reiser4progs-0.5.3/configure.in	2004-04-11 00:53:47.393087536 +0200
+diff -burN reiser4progs-0.5.6.orig/configure.in reiser4progs-0.5.6/configure.in
+--- reiser4progs-0.5.6.orig/configure.in	2004-08-08 14:38:42.533258288 +0200
++++ reiser4progs-0.5.6/configure.in	2004-08-08 14:40:58.697558168 +0200
 @@ -42,80 +42,6 @@
  AC_DEFINE_UNQUOTED(LIBREISER4_MAX_INTERFACE_VERSION, $LIBREISER4_BINARY_AGE)
  AC_DEFINE_UNQUOTED(LIBREISER4_MIN_INTERFACE_VERSION, $LIBREISER4_INTERFACE_AGE)
@@ -81,21 +82,21 @@
  AC_ARG_WITH(libaal,
  	[  --with-libaal            prefix of where libaal was installed], ,
  )
-@@ -467,7 +393,7 @@
+@@ -486,7 +412,7 @@
  ])
  
  OLD_LIBS="$LIBS"
--AC_CHECK_LIBAAL(aal, 0.5.0, ,exit)
-+AC_CHECK_LIBAAL(0.5.0, [LIBS="-laal"],exit)
+-AC_CHECK_LIBAAL(aal, 0.5.3, ,exit)
++AC_CHECK_LIBAAL(0.5.3,[LIBS="-laal"],exit)
  AAL_LIBS="$LIBS"
  LIBS="$OLD_LIBS"
  
-@@ -475,7 +401,7 @@
+@@ -494,7 +420,7 @@
  
  if test x$enable_stand_alone = xyes; then
      	OLD_LIBS="$LIBS"
--    	AC_CHECK_LIBAAL(aal-alone, 0.5.0, ,exit)
-+    	AC_CHECK_LIBAAL(0.5.0, [LIBS="-laal"],exit)
+-    	AC_CHECK_LIBAAL(aal-alone, 0.5.3, ,exit)
++    	AC_CHECK_LIBAAL(0.5.3, [LIBS="-laal"],,exit)
      	AAL_ALONE_LIBS="$LIBS"
      	LIBS="$OLD_LIBS"
  

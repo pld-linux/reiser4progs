@@ -1,4 +1,4 @@
-%define		snapshot	2004.03.26
+%define		snapshot	2004.08.04
 
 Summary:	Utilities belonging to the Reiser4 filesystem
 Summary(pl):	NarzЙdzia dla systemu plikСw Reiser4
@@ -6,12 +6,12 @@ Summary(pt_BR):	Este pacote contИm os utilitАrios para manipulaГЦo do sistema de
 Summary(uk):	Утил╕ти для роботы з файловою системою Reiser4
 Summary(ru):	Утилиты для работы с файловой системой Reiser4
 Name:		reiser4progs
-Version:	0.5.3
-Release:	1
+Version:	0.5.6
+Release:	1.%{snapshot}
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://www.namesys.com/snapshots/%{snapshot}/%{name}-%{version}.tar.gz
-# Source0-md5:	8a14be41aafba9a55a04d3a31cd107e5
+Source0:	http://www.namesys.com/snapshots/%{snapshot}/%{name}-%{version}-fixed.tar.gz
+# Source0-md5:	fd66ebfcc4a0cf14864f87105f7dd4eb
 Patch0:		%{name}-acfix.patch
 Patch1:		%{name}-opt.patch
 Patch2:		%{name}-am18.patch

@@ -1,28 +1,15 @@
---- reiser4progs-0.4.20/configure.in.orig	2003-12-28 13:53:23.259716216 +0100
-+++ reiser4progs-0.4.20/configure.in	2003-12-28 13:54:09.909624352 +0100
-@@ -46,12 +46,11 @@
- )
- 
- LIBS=""
--CFLAGS=""
- 
- if test x$with_libaal != x; then
-     	LIBS="-L$with_libaal/lib"
- 	LDFLAGS="-L$with_libaal/lib"
--    	CFLAGS="-I$with_libaal/include"
-+    	CFLAGS="$CFLAGS -I$with_libaal/include"
-     	CPPFLAGS="-I$with_libaal/include"
- fi
- 
-@@ -453,13 +452,7 @@
+diff -burN reiser4progs-0.5.6.orig/configure.in reiser4progs-0.5.6/configure.in
+--- reiser4progs-0.5.6.orig/configure.in	2004-08-08 14:38:42.533258288 +0200
++++ reiser4progs-0.5.6/configure.in	2004-08-08 14:46:28.951351960 +0200
+@@ -577,13 +577,7 @@
  
  CFLAGS="$CFLAGS -W -Wall"
  
 -if test x$enable_debug = xyes; then
--    	GENERIC_CFLAGS="$GENERIC_CFLAGS -O0 -g"
--    	ALONE_CFLAGS="$ALONE_CFLAGS -O0 -g"
+-    	GENERIC_CFLAGS="$GENERIC_CFLAGS -O1 -g"
+-    	ALONE_CFLAGS="$ALONE_CFLAGS -O1 -g"
 -else
--    	GENERIC_CFLAGS="$GENERIC_CFLAGS -O2"
+-    	GENERIC_CFLAGS="$GENERIC_CFLAGS -O3"
 -    	ALONE_CFLAGS="$ALONE_CFLAGS -Os"
 -
 +if test x$enable_debug != xyes; then
