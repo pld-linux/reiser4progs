@@ -1,11 +1,12 @@
---- reiser4progs-0.4.7/configure.in.orig	2003-05-28 16:31:09.000000000 +0200
-+++ reiser4progs-0.4.7/configure.in	2003-06-05 22:38:36.000000000 +0200
-@@ -48,77 +48,6 @@
-         with_uuid=yes
- )
+diff -burN reiser4progs-0.4.11.orig/configure.in reiser4progs-0.4.11/configure.in
+--- reiser4progs-0.4.11.orig/configure.in	2003-08-13 21:01:49.292634280 +0200
++++ reiser4progs-0.4.11/configure.in	2003-08-13 21:06:56.010006152 +0200
+@@ -41,77 +41,6 @@
+ AC_DEFINE_UNQUOTED(LIBREISER4_MAX_INTERFACE_VERSION, $LIBREISER4_BINARY_AGE)
+ AC_DEFINE_UNQUOTED(LIBREISER4_MIN_INTERFACE_VERSION, $LIBREISER4_INTERFACE_AGE)
  
--dnl Macro for checking libaal
--AC_DEFUN(AC_CHECK_LIBAAL,
+-# Macro for checking libaal
+-AC_DEFUN([AC_CHECK_LIBAAL],
 -[
 -
 -AC_CHECK_LIB($1, aal_device_open, ,
@@ -13,7 +14,7 @@
 -http://www.namesys.com/pub/libaal])]
 -$4)
 -
--dnl Check for headers and library
+-# Check for headers and library
 -AC_CHECK_HEADER(aal/aal.h, ,
 -    [AC_MSG_ERROR([<aal/aal.h> not found])] 
 -$4)
@@ -24,7 +25,7 @@
 -    AC_MSG_RESULT(failed)
 -    AC_MSG_ERROR([lib$1 can't execute test]))
 -
--dnl Get major, minor, and micro version from arg MINIMUM-VERSION
+-# Get major, minor, and micro version from arg MINIMUM-VERSION
 -libaal_config_major_version=`echo $2 | \
 -    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
 -libaal_config_minor_version=`echo $2 | \
@@ -32,7 +33,7 @@
 -libaal_config_micro_version=`echo $2 | \
 -    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
 -
--dnl Compare MINIMUM-VERSION with libaal version
+-# Compare MINIMUM-VERSION with libaal version
 -AC_TRY_RUN([
 -#include <stdio.h>
 -#include <stdlib.h>
@@ -72,13 +73,13 @@
 -    AC_MSG_RESULT(no) ; $4,
 -    [echo $ac_n "cross compiling; assumed OK... $ac_c"])
 -
--dnl Execute ACTION-IF-FOUND
+-# Execute ACTION-IF-FOUND
 -$3])
 -
- dnl Check for libuuid
- if test "$with_uuid" = yes; then
-     OLD_LIBS="$LIBS"
-@@ -146,10 +75,10 @@
+ AC_ARG_WITH(libaal,
+     [  --with-libaal=<dir>      prefix of where libaal was installed], ,
+ )
+@@ -157,10 +86,10 @@
  	LIBS=""
  	AC_SEARCH_LIBS(tgetent, ncurses curses termcap termlib,
  		PROGS_LIBS="$PROGS_LIBS $LIBS",
@@ -91,7 +92,7 @@
  		with_readline=no
  	)
  	LIBS="$OLD_LIBS"
-@@ -160,9 +89,9 @@
+@@ -171,9 +100,9 @@
      OLD_LIBS="$LIBS"
      LIBS=""
      AC_CHECK_LIB(readline, readline, ,
@@ -103,7 +104,7 @@
  	    with_readline=no
      )
      PROGS_LIBS="$PROGS_LIBS $LIBS"
-@@ -263,19 +192,19 @@
+@@ -280,19 +209,19 @@
  
  if test "$with_uuid" = yes; then
      AC_CHECK_HEADERS(uuid/uuid.h, ,
@@ -127,12 +128,12 @@
      )
  fi
  
-@@ -336,7 +336,7 @@
+@@ -355,7 +284,7 @@
+ AC_SUBST(LIBREISER4_LIBS)
  
  OLD_LIBS="$LIBS"
- LIBS=""
--AC_CHECK_LIBAAL(aal, 0.4.7, ,exit)
-+AC_CHECK_LIBAAL(0.4.7, LIBS="-laal", [AC_MSG_ERROR([libaal not found])])
+-AC_CHECK_LIBAAL(aal, 0.4.9, ,exit)
++AC_CHECK_LIBAAL(0.4.9, LIBS="-laal", [AC_MSG_ERROR([libaal not found])])
  AAL_LIBS="$LIBS"
  LIBS="$OLD_LIBS"
  
