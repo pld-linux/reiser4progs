@@ -1,5 +1,3 @@
-%define		snapshot	2004.08.04
-%define		_snapshot	20040804
 
 Summary:	Utilities belonging to the Reiser4 filesystem
 Summary(pl):	Narzêdzia dla systemu plików Reiser4
@@ -7,22 +5,21 @@ Summary(pt_BR):	Este pacote contém os utilitários para manipulação do sistema de
 Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ ÒÏÂÏÔÙ Ú ÆÁÊÌÏ×ÏÀ ÓÉÓÔÅÍÏÀ Reiser4
 Summary(ru):	õÔÉÌÉÔÙ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÏ×ÏÊ ÓÉÓÔÅÍÏÊ Reiser4
 Name:		reiser4progs
-Version:	1.0.0
+Version:	1.0.2
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	ftp://ftp.namesys.com/pub/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	47e9c3b3760e5500d6176555dd268fea
-Patch0:		%{name}-opt.patch
-Patch1:		%{name}-am18.patch
+# Source0-md5:	da64ff2266d854ffab67faf18eb8f370
+Patch0:		%{name}-am18.patch
 URL:		http://www.reiserfs.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libaal-devel >= 1.0.0
+BuildRequires:	libaal-devel >= 1.0.2
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	libuuid-devel
 BuildRequires:	readline-devel
-Requires:	libaal >= 1.0.0
+Requires:	libaal >= 1.0.2
 Obsoletes:	reiserfs-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -90,7 +87,6 @@ Statyczne biblioteki reiser4progs.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
