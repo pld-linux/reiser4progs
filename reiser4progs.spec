@@ -1,4 +1,4 @@
-%define		snapshot	2003.08.11
+%define		snapshot	2003.08.26
 %define		_snap    %(echo %{snapshot} | tr -d .)
 
 Summary:	Utilities belonging to the Reiser4 filesystem
@@ -7,14 +7,15 @@ Summary(pt_BR):	Este pacote contИm os utilitАrios para manipulaГЦo do sistema de
 Summary(uk):	Утил╕ти для роботы з файловою системою Reiser4
 Summary(ru):	Утилиты для работы с файловой системой Reiser4
 Name:		reiser4progs
-Version:	0.4.11
+Version:	0.4.12
 Release:	0.%{_snap}
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://thebsh.namesys.com/snapshots/%{snapshot}/%{name}-%{version}.tar.gz
-# Source0-md5:	f10006b2c0156d9f7e4aff9e2ab74807
+Source0:	http://www.namesys.com/snapshots/%{snapshot}/%{name}-%{_snap}.tar.gz
+# Source0-md5:	dd28aeaa2abc1bcee96ff24b4b123748
 Patch0:		%{name}-acfix.patch
 Patch1:		%{name}-opt.patch
+Patch2:		%{name}-destdir_fix.patch
 URL:		http://www.reiserfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -89,6 +90,7 @@ Statyczne biblioteki reiser4progs.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing
