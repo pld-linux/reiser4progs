@@ -19,9 +19,9 @@ Patch2:		%{name}-destdir_fix.patch
 URL:		http://www.reiserfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	e2fsprogs-devel
 BuildRequires:	libaal-devel >= 0.4.9
 BuildRequires:	libtool >= 1:1.4.2-9
+BuildRequires:	libuuid-devel
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	reiserfs-utils
