@@ -1,4 +1,3 @@
-
 Summary:	Utilities belonging to the Reiser4 filesystem
 Summary(pl):	Narzêdzia dla systemu plików Reiser4
 Summary(pt_BR):	Este pacote contém os utilitários para manipulação do sistema de arquivos Reiser4
@@ -9,9 +8,10 @@ Version:	1.0.2
 Release:	1
 License:	GPL v2
 Group:		Applications/System
-Source0:	ftp://ftp.namesys.com/pub/%{name}/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
 # Source0-md5:	da64ff2266d854ffab67faf18eb8f370
 Patch0:		%{name}-am18.patch
+Patch1:		%{name}-opt.patch
 URL:		http://www.reiserfs.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -87,6 +87,7 @@ Statyczne biblioteki reiser4progs.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
