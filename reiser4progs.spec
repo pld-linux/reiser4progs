@@ -12,7 +12,7 @@ Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
 # Source0-md5:	9b0bb224aa592809448390d4cf1b88e9
 Patch0:		%{name}-am18.patch
 Patch1:		%{name}-opt.patch
-URL:		http://www.reiserfs.org/
+URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	libaal-devel >= 1.0.3
