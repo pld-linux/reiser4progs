@@ -1,0 +1,25 @@
+--- reiser4progs-0.4.7/configure.in.orig	2003-06-05 22:38:36.000000000 +0200
++++ reiser4progs-0.4.7/configure.in	2003-06-05 22:39:31.000000000 +0200
+@@ -176,7 +176,6 @@
+ AC_PROG_RANLIB
+ AC_PROG_AWK
+ 
+-CFLAGS=""
+ ALONE_CFLAGS=""
+ GENERIC_CFLAGS=""
+ 
+@@ -319,14 +318,6 @@
+ -DENABLE_SYMLINKS_SUPPORT -DENABLE_R5_HASH -DENABLE_FNV1_HASH -DENABLE_RUPASOV_HASH \
+ -DENABLE_TEA_HASH"
+ 
+-if test x$enable_debug = xyes; then
+-    GENERIC_CFLAGS="$GENERIC_CFLAGS -O0 -g"
+-    ALONE_CFLAGS="$ALONE_CFLAGS -O0 -g"
+-else
+-    GENERIC_CFLAGS="$GENERIC_CFLAGS -O2"
+-    ALONE_CFLAGS="$ALONE_CFLAGS -Os"
+-fi
+-
+ CFLAGS="$CFLAGS -W -Wall -Wno-unused"
+ if test x$enable_Werror = xyes; then
+     CFLAGS="$CFLAGS -Werror"

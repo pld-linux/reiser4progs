@@ -13,9 +13,15 @@ License:	GPL v2
 Group:		Applications/System
 # Source0-md5:	8b0c930d5cb42d507ba351b110510ae7
 Source0:	http://thebsh.namesys.com/snapshots/%{snapshot}/%{name}-%{snap}.tar.gz
+Patch0:		%{name}-acfix.patch
+Patch1:		%{name}-opt.patch
 URL:		http://www.reiserfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	e2fsprogs-devel
+BuildRequires:	libaal-devel
+BuildRequires:	libtool >= 1:1.4.2-9
+BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	reiserfs-utils
 
@@ -55,16 +61,44 @@ arquivos Reiser4.
 %description -l uk
 Наб╕р утил╕т для роботи з файловою системою Reiser4.
 
+%package devel
+Summary:	Header files for reiser4progs libraries
+Summary(pl):	Pliki nagЁСwkowe bibliotek reiser4progs
+Group:		Development/Libraries
+Requires:	%{name} = %{version}
+
+%description devel
+Header files for reiser4progs libraries.
+
+%description devel -l pl
+Pliki nagЁСwkowe bibliotek reiser4progs.
+
+%package static
+Summary:	reiser4progs static libraries
+Summary(pl):	Statyczne biblioteki reiser4progs
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
+
+%description static
+reiser4progs static libraries.
+
+%description static -l pl
+Statyczne biblioteki reiser4progs.
+
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
+%{__libtoolize}
 %{__aclocal}
 %{__autoheader}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	%{!?debug:--disable-debug}
 %{__make}
 
 %install
@@ -76,10 +110,25 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS COPYING CREDITS ChangeLog INSTALL NEWS README THANKS TODO
+# COPYING contains information other than GPL text
+%doc AUTHORS BUGS COPYING CREDITS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_sbindir}/*
-%attr(755,root,root) %{_libdir}/*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%dir %{_libdir}/reiser4
 %{_mandir}/man*/*
+
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 %{_includedir}/*
+%{_aclocaldir}/*.m4
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
