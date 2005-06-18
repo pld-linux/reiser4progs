@@ -11,6 +11,7 @@ Group:		Applications/System
 Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
 # Source0-md5:	b2cbc8eb9429b50e0e99ba4eeda4801e
 Patch0:		%{name}-opt.patch
+Patch1:		%{name}-gcc4.patch
 URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -86,6 +87,7 @@ Statyczne biblioteki reiser4progs.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
