@@ -4,14 +4,14 @@ Summary(pt_BR):	Este pacote contém os utilitários para manipulação do sistema de
 Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ ÒÏÂÏÔÙ Ú ÆÁÊÌÏ×ÏÀ ÓÉÓÔÅÍÏÀ Reiser4
 Summary(ru):	õÔÉÌÉÔÙ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÏ×ÏÊ ÓÉÓÔÅÍÏÊ Reiser4
 Name:		reiser4progs
-Version:	1.0.4
+Version:	1.0.5
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
-# Source0-md5:	b2cbc8eb9429b50e0e99ba4eeda4801e
+# Source0-md5:	b0756831e16b2395d5f443526d640792
 Patch0:		%{name}-opt.patch
-Patch1:		%{name}-gcc4.patch
+Patch1:		%{name}-libaal.patch
 URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -64,7 +64,7 @@ Summary:	Header files for reiser4progs libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek reiser4progs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libaal-devel >= 0.5.0
+Requires:	libaal-devel >= %{version}
 
 %description devel
 Header files for reiser4progs libraries.
