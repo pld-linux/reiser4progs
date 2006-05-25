@@ -5,7 +5,7 @@ Summary(uk):	Утил╕ти для роботы з файловою системою Reiser4
 Summary(ru):	Утилиты для работы с файловой системой Reiser4
 Name:		reiser4progs
 Version:	1.0.5
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/System
 Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
@@ -77,6 +77,7 @@ Summary:	reiser4progs static libraries
 Summary(pl):	Statyczne biblioteki reiser4progs
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Requires:	libaal-static >= %{version}
 
 %description static
 reiser4progs static libraries.
