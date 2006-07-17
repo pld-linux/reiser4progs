@@ -1,8 +1,8 @@
 Summary:	Utilities belonging to the Reiser4 filesystem
 Summary(pl):	NarzЙdzia dla systemu plikСw Reiser4
 Summary(pt_BR):	Este pacote contИm os utilitАrios para manipulaГЦo do sistema de arquivos Reiser4
-Summary(uk):	Утил╕ти для роботы з файловою системою Reiser4
 Summary(ru):	Утилиты для работы с файловой системой Reiser4
+Summary(uk):	Утил╕ти для роботы з файловою системою Reiser4
 Name:		reiser4progs
 Version:	1.0.5
 Release:	3
@@ -97,6 +97,8 @@ Statyczne biblioteki reiser4progs.
 %{__autoconf}
 %{__automake}
 %configure \
+	--libdir=/%{_lib} \
+	--libexecdir=/%{_lib} \
 	%{!?debug:--disable-debug}
 %{__make}
 
@@ -109,24 +111,24 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
+%post -p %{_sbindir}/ldconfig
+%postun -p %{_sbindir}/ldconfig
 
 %files
 %defattr(644,root,root,755)
 # COPYING contains information other than GPL text
 %doc AUTHORS BUGS COPYING CREDITS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_sbindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) /%{_lib}/lib*.so.*.*.*
 %{_mandir}/man*/*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) /%{_lib}/lib*.so
+/%{_lib}/lib*.la
 %{_includedir}/*
 %{_aclocaldir}/*.m4
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+/%{_lib}/lib*.a
