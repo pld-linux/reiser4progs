@@ -104,9 +104,18 @@ Statyczne biblioteki reiser4progs.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_libdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+for f in `ls $RPM_BUILD_ROOT/%{_lib}/*.*a`; do
+	mv $f $RPM_BUILD_ROOT%{_libdir}
+done
+for f in libreiser4 libreiser4-minimal librepair; do
+	lib=$(cd $RPM_BUILD_ROOT/%{_lib}; echo $f-1.0.so.*.*.*)
+	ln -sf /%{_lib}/$lib $RPM_BUILD_ROOT%{_libdir}/$f.so
+done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -124,11 +133,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) /%{_lib}/lib*.so
-/%{_lib}/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 %{_includedir}/*
 %{_aclocaldir}/*.m4
 
 %files static
 %defattr(644,root,root,755)
-/%{_lib}/lib*.a
+%{_libdir}/lib*.a
