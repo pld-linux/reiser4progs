@@ -5,7 +5,7 @@ Summary(ru):	Утилиты для работы с файловой системой Reiser4
 Summary(uk):	Утил╕ти для роботы з файловою системою Reiser4
 Name:		reiser4progs
 Version:	1.0.5
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/System
 Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
@@ -97,8 +97,6 @@ Statyczne biblioteki reiser4progs.
 %{__autoconf}
 %{__automake}
 %configure \
-	--libdir=/%{_lib} \
-	--libexecdir=/%{_lib} \
 	%{!?debug:--disable-debug}
 %{__make}
 
@@ -109,9 +107,8 @@ install -d $RPM_BUILD_ROOT%{_libdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-for f in `ls $RPM_BUILD_ROOT/%{_lib}/*.*a`; do
-	mv $f $RPM_BUILD_ROOT%{_libdir}
-done
+install -d $RPM_BUILD_ROOT/%{_lib}
+mv -f $RPM_BUILD_ROOT%{_libdir}/lib*.so.* $RPM_BUILD_ROOT/%{_lib}
 for f in libreiser4 libreiser4-minimal librepair; do
 	lib=$(cd $RPM_BUILD_ROOT/%{_lib}; echo $f-1.0.so.*.*.*)
 	ln -sf /%{_lib}/$lib $RPM_BUILD_ROOT%{_libdir}/$f.so
@@ -120,24 +117,33 @@ done
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 # COPYING contains information other than GPL text
 %doc AUTHORS BUGS COPYING CREDITS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_sbindir}/*
-%attr(755,root,root) /%{_lib}/lib*.so.*.*.*
+%attr(755,root,root) /%{_lib}/libreiser4-1.0.so.*.*.*
+%attr(755,root,root) /%{_lib}/libreiser4-minimal-1.0.so.*.*.*
+%attr(755,root,root) /%{_lib}/librepair-1.0.so.*.*.*
 %{_mandir}/man*/*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
-%{_aclocaldir}/*.m4
+%attr(755,root,root) %{_libdir}/libreiser4.so
+%attr(755,root,root) %{_libdir}/libreiser4-minimal.so
+%attr(755,root,root) %{_libdir}/librepair.so
+%{_libdir}/libreiser4.la
+%{_libdir}/libreiser4-minimal.la
+%{_libdir}/librepair.la
+%{_includedir}/reiser4
+%{_includedir}/repair
+%{_aclocaldir}/libreiser4.m4
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libreiser4.a
+%{_libdir}/libreiser4-minimal.a
+%{_libdir}/librepair.a
