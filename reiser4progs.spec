@@ -1,8 +1,8 @@
 Summary:	Utilities belonging to the Reiser4 filesystem
-Summary(pl):	Narzêdzia dla systemu plików Reiser4
-Summary(pt_BR):	Este pacote contém os utilitários para manipulação do sistema de arquivos Reiser4
-Summary(ru):	õÔÉÌÉÔÙ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÏ×ÏÊ ÓÉÓÔÅÍÏÊ Reiser4
-Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ ÒÏÂÏÔÙ Ú ÆÁÊÌÏ×ÏÀ ÓÉÓÔÅÍÏÀ Reiser4
+Summary(pl.UTF-8):   NarzÄ™dzia dla systemu plikÃ³w Reiser4
+Summary(pt_BR.UTF-8):   Este pacote contÃ©m os utilitÃ¡rios para manipulaÃ§Ã£o do sistema de arquivos Reiser4
+Summary(ru.UTF-8):   Ð£Ñ‚Ð¸Ð»Ð¸Ñ‚Ñ‹ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð¾Ð¹ ÑÐ¸ÑÑ‚ÐµÐ¼Ð¾Ð¹ Reiser4
+Summary(uk.UTF-8):   Ð£Ñ‚Ð¸Ð»Ñ–Ñ‚Ð¸ Ð´Ð»Ñ Ñ€Ð¾Ð±Ð¾Ñ‚Ñ‹ Ð· Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð¾ÑŽ ÑÐ¸ÑÑ‚ÐµÐ¼Ð¾ÑŽ Reiser4
 Name:		reiser4progs
 Version:	1.0.5
 Release:	4
@@ -44,24 +44,24 @@ establish that. Reiserfs has a commitment to opening up the FS design
 to contributions, and we are now now adding plug-ins so that you can
 create your own types of directories and files.
 
-%description -l pl
+%description -l pl.UTF-8
 Pakiet zawiera programy do tworzenia (mkreiser4), sprawdzania i
-naprawiania b³êdów (reiser4fsck) oraz zmiany wielko¶ci
-(resize_reiser4) systemu plików Reiser4.
+naprawiania bÅ‚Ä™dÃ³w (reiser4fsck) oraz zmiany wielkoÅ›ci
+(resize_reiser4) systemu plikÃ³w Reiser4.
 
-%description -l pt_BR
-Este pacote contém os utilitários para manipulação do sistema de
+%description -l pt_BR.UTF-8
+Este pacote contÃ©m os utilitÃ¡rios para manipulaÃ§Ã£o do sistema de
 arquivos Reiser4.
 
-%description -l ru
-îÁÂÏÒ ÕÔÉÌÉÔ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÏ×ÏÊ ÓÉÓÔÅÍÏÊ Reiser4.
+%description -l ru.UTF-8
+ÐÐ°Ð±Ð¾Ñ€ ÑƒÑ‚Ð¸Ð»Ð¸Ñ‚ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð¾Ð¹ ÑÐ¸ÑÑ‚ÐµÐ¼Ð¾Ð¹ Reiser4.
 
-%description -l uk
-îÁÂ¦Ò ÕÔÉÌ¦Ô ÄÌÑ ÒÏÂÏÔÉ Ú ÆÁÊÌÏ×ÏÀ ÓÉÓÔÅÍÏÀ Reiser4.
+%description -l uk.UTF-8
+ÐÐ°Ð±Ñ–Ñ€ ÑƒÑ‚Ð¸Ð»Ñ–Ñ‚ Ð´Ð»Ñ Ñ€Ð¾Ð±Ð¾Ñ‚Ð¸ Ð· Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð¾ÑŽ ÑÐ¸ÑÑ‚ÐµÐ¼Ð¾ÑŽ Reiser4.
 
 %package devel
 Summary:	Header files for reiser4progs libraries
-Summary(pl):	Pliki nag³ówkowe bibliotek reiser4progs
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe bibliotek reiser4progs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libaal-devel >= %{version}
@@ -69,12 +69,12 @@ Requires:	libaal-devel >= %{version}
 %description devel
 Header files for reiser4progs libraries.
 
-%description devel -l pl
-Pliki nag³ówkowe bibliotek reiser4progs.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe bibliotek reiser4progs.
 
 %package static
 Summary:	reiser4progs static libraries
-Summary(pl):	Statyczne biblioteki reiser4progs
+Summary(pl.UTF-8):   Statyczne biblioteki reiser4progs
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	libaal-static >= %{version}
@@ -82,7 +82,7 @@ Requires:	libaal-static >= %{version}
 %description static
 reiser4progs static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki reiser4progs.
 
 %prep
