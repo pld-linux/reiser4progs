@@ -1,8 +1,8 @@
 Summary:	Utilities belonging to the Reiser4 filesystem
-Summary(pl.UTF-8):   Narzędzia dla systemu plików Reiser4
-Summary(pt_BR.UTF-8):   Este pacote contém os utilitários para manipulação do sistema de arquivos Reiser4
-Summary(ru.UTF-8):   Утилиты для работы с файловой системой Reiser4
-Summary(uk.UTF-8):   Утиліти для роботы з файловою системою Reiser4
+Summary(pl.UTF-8):	Narzędzia dla systemu plików Reiser4
+Summary(pt_BR.UTF-8):	Este pacote contém os utilitários para manipulação do sistema de arquivos Reiser4
+Summary(ru.UTF-8):	Утилиты для работы с файловой системой Reiser4
+Summary(uk.UTF-8):	Утиліти для роботы з файловою системою Reiser4
 Name:		reiser4progs
 Version:	1.0.5
 Release:	4
@@ -61,7 +61,7 @@ arquivos Reiser4.
 
 %package devel
 Summary:	Header files for reiser4progs libraries
-Summary(pl.UTF-8):   Pliki nagłówkowe bibliotek reiser4progs
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek reiser4progs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libaal-devel >= %{version}
@@ -74,7 +74,7 @@ Pliki nagłówkowe bibliotek reiser4progs.
 
 %package static
 Summary:	reiser4progs static libraries
-Summary(pl.UTF-8):   Statyczne biblioteki reiser4progs
+Summary(pl.UTF-8):	Statyczne biblioteki reiser4progs
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	libaal-static >= %{version}
