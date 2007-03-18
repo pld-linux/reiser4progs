@@ -4,22 +4,22 @@ Summary(pt_BR):	Este pacote contém os utilitários para manipulação do sistema de
 Summary(ru):	õÔÉÌÉÔÙ ÄÌÑ ÒÁÂÏÔÙ Ó ÆÁÊÌÏ×ÏÊ ÓÉÓÔÅÍÏÊ Reiser4
 Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ ÒÏÂÏÔÙ Ú ÆÁÊÌÏ×ÏÀ ÓÉÓÔÅÍÏÀ Reiser4
 Name:		reiser4progs
-Version:	1.0.5
-Release:	4
+Version:	1.0.6
+Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
-# Source0-md5:	b0756831e16b2395d5f443526d640792
+# Source0-md5:	8c618e35a4a893f0e948b03cee25749d
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-libaal.patch
 URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libaal-devel >= %{version}
+BuildRequires:	libaal-devel >= 1.0.5
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	libuuid-devel
 BuildRequires:	readline-devel
-Requires:	libaal >= %{version}
+Requires:	libaal >= 1.0.5
 Obsoletes:	reiserfs-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -64,7 +64,7 @@ Summary:	Header files for reiser4progs libraries
 Summary(pl):	Pliki nag³ówkowe bibliotek reiser4progs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libaal-devel >= %{version}
+Requires:	libaal-devel >= 1.0.5
 
 %description devel
 Header files for reiser4progs libraries.
@@ -77,7 +77,7 @@ Summary:	reiser4progs static libraries
 Summary(pl):	Statyczne biblioteki reiser4progs
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
-Requires:	libaal-static >= %{version}
+Requires:	libaal-static >= 1.0.5
 
 %description static
 reiser4progs static libraries.
