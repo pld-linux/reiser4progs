@@ -5,13 +5,15 @@ Summary(ru.UTF-8):	Утилиты для работы с файловой сис
 Summary(uk.UTF-8):	Утиліти для роботы з файловою системою Reiser4
 Name:		reiser4progs
 Version:	1.0.6
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/System
 Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
 # Source0-md5:	8c618e35a4a893f0e948b03cee25749d
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-libaal.patch
+Patch2:		%{name}-elif.patch
+Patch3:		%{name}-makefile.patch
 URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -89,6 +91,8 @@ Statyczne biblioteki reiser4progs.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
