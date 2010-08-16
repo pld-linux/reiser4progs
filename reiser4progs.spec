@@ -4,16 +4,15 @@ Summary(pt_BR.UTF-8):	Este pacote contém os utilitários para manipulação do 
 Summary(ru.UTF-8):	Утилиты для работы с файловой системой Reiser4
 Summary(uk.UTF-8):	Утиліти для роботы з файловою системою Reiser4
 Name:		reiser4progs
-Version:	1.0.6
-Release:	2
+Version:	1.0.7
+Release:	1
 License:	GPL v2
 Group:		Applications/System
-Source0:	ftp://ftp.namesys.com/pub/reiser4progs/%{name}-%{version}.tar.gz
-# Source0-md5:	8c618e35a4a893f0e948b03cee25749d
+Source0:	http://kernel.org/pub/linux/utils/fs/reiser4/reiser4progs/%{name}-%{version}.tar.bz2
+# Source0-md5:	0f637512ad11f73739e0e44057bd59e2
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-libaal.patch
-Patch2:		%{name}-elif.patch
-Patch3:		%{name}-makefile.patch
+Patch2:		%{name}-makefile.patch
 URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -92,7 +91,6 @@ Statyczne biblioteki reiser4progs.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__libtoolize}
@@ -128,11 +126,21 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 # COPYING contains information other than GPL text
 %doc AUTHORS BUGS COPYING CREDITS ChangeLog NEWS README THANKS TODO
-%attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_sbindir}/debugfs.reiser4
+%attr(755,root,root) %{_sbindir}/fsck.reiser4
+%attr(755,root,root) %{_sbindir}/make_reiser4
+%attr(755,root,root) %{_sbindir}/measurefs.reiser4
+%attr(755,root,root) %{_sbindir}/mkfs.reiser4
 %attr(755,root,root) /%{_lib}/libreiser4-1.0.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libreiser4-1.0.so.7
 %attr(755,root,root) /%{_lib}/libreiser4-minimal-1.0.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libreiser4-minimal-1.0.so.7
 %attr(755,root,root) /%{_lib}/librepair-1.0.so.*.*.*
-%{_mandir}/man*/*
+%attr(755,root,root) %ghost /%{_lib}/librepair-1.0.so.7
+%{_mandir}/man8/debugfs.reiser4.8*
+%{_mandir}/man8/fsck.reiser4.8*
+%{_mandir}/man8/measurefs.reiser4.8*
+%{_mandir}/man8/mkfs.reiser4.8*
 
 %files devel
 %defattr(644,root,root,755)
