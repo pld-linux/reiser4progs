@@ -1,0 +1,37 @@
+--- reiser4progs-1.0.7/libreiser4/profile.c~	2009-01-08 22:34:27.000000000 +0100
++++ reiser4progs-1.0.7/libreiser4/profile.c	2011-01-07 01:28:39.509867695 +0100
+@@ -5,7 +5,7 @@
+ 
+ 
+ #include <reiser4/libreiser4.h>
+-#include <misc/misc.h>
++#define INVAL_DIG (0x7fffffff)
+ 
+ /* All default plugin ids. This is used for getting plugin id if it cannot be
+    obtained by usual way (get from disk structures, etc.). All these may be
+@@ -327,6 +327,25 @@
+ 	}
+ }
+ 
++#include <stdlib.h>
++#include <errno.h>
++/* Converts passed @sqtr into long long value. In the case of error, INVAL_DIG
++   will be returned. */
++static long long misc_str2long(const char *str, int base) {
++	char *error;
++	long long result = 0;
++
++	if (!str)
++		return INVAL_DIG;
++
++	result = strtol(str, &error, base);
++	
++	if (errno == ERANGE || *error)
++		return INVAL_DIG;
++	
++	return result;
++}
++
+ /* Overrides plugin id by @id found by @name. */
+ errno_t reiser4_profile_override(const char *slot, const char *name) {
+ 	reiser4_plug_t *plug;
