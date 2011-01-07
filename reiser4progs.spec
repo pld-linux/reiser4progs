@@ -13,6 +13,7 @@ Source0:	http://kernel.org/pub/linux/utils/fs/reiser4/reiser4progs/%{name}-%{ver
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-libaal.patch
 Patch2:		%{name}-makefile.patch
+Patch3:		%{name}-libreiser4-no-libmisc.patch
 URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -91,6 +92,7 @@ Statyczne biblioteki reiser4progs.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
