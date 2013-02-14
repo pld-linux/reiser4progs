@@ -15,6 +15,7 @@ Patch1:		%{name}-libaal.patch
 Patch2:		%{name}-makefile.patch
 Patch3:		%{name}-libreiser4-no-libmisc.patch
 Patch4:		%{name}-am.patch
+Patch5:		%{name}-format-security.patch
 URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -95,6 +96,7 @@ Statyczne biblioteki reiser4progs.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__libtoolize}
@@ -110,7 +112,7 @@ Statyczne biblioteki reiser4progs.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}
 
-%{__make} install \
+%{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/%{_lib}
