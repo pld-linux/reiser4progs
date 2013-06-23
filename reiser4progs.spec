@@ -5,7 +5,7 @@ Summary(ru.UTF-8):	Утилиты для работы с файловой сис
 Summary(uk.UTF-8):	Утиліти для роботы з файловою системою Reiser4
 Name:		reiser4progs
 Version:	1.0.7
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://kernel.org/pub/linux/utils/fs/reiser4/reiser4progs/%{name}-%{version}.tar.bz2
