@@ -4,18 +4,17 @@ Summary(pt_BR.UTF-8):	Este pacote contém os utilitários para manipulação do 
 Summary(ru.UTF-8):	Утилиты для работы с файловой системой Reiser4
 Summary(uk.UTF-8):	Утиліти для роботы з файловою системою Reiser4
 Name:		reiser4progs
-Version:	1.0.7
-Release:	2
+Version:	1.0.9
+Release:	1
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://kernel.org/pub/linux/utils/fs/reiser4/reiser4progs/%{name}-%{version}.tar.bz2
-# Source0-md5:	0f637512ad11f73739e0e44057bd59e2
+Source0:	http://downloads.sourceforge.net/reiser4/reiser4-utils/reiser4progs/%{name}-%{version}.tar.gz
+# Source0-md5:	1fe5dce409277d8209ea28f32c6b199f
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-libaal.patch
-Patch2:		%{name}-makefile.patch
-Patch3:		%{name}-libreiser4-no-libmisc.patch
-Patch4:		%{name}-am.patch
-Patch5:		%{name}-format-security.patch
+Patch2:		%{name}-libreiser4-no-libmisc.patch
+Patch3:		%{name}-am.patch
+Patch4:		%{name}-format-security.patch
 URL:		http://www.namesys.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -96,7 +95,6 @@ Statyczne biblioteki reiser4progs.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 %{__libtoolize}
@@ -138,11 +136,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/measurefs.reiser4
 %attr(755,root,root) %{_sbindir}/mkfs.reiser4
 %attr(755,root,root) /%{_lib}/libreiser4-1.0.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libreiser4-1.0.so.7
+%attr(755,root,root) %ghost /%{_lib}/libreiser4-1.0.so.9
 %attr(755,root,root) /%{_lib}/libreiser4-minimal-1.0.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libreiser4-minimal-1.0.so.7
+%attr(755,root,root) %ghost /%{_lib}/libreiser4-minimal-1.0.so.9
 %attr(755,root,root) /%{_lib}/librepair-1.0.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/librepair-1.0.so.7
+%attr(755,root,root) %ghost /%{_lib}/librepair-1.0.so.9
 %{_mandir}/man8/debugfs.reiser4.8*
 %{_mandir}/man8/fsck.reiser4.8*
 %{_mandir}/man8/measurefs.reiser4.8*
