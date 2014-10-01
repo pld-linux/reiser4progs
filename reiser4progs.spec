@@ -8,21 +8,21 @@ Version:	1.0.9
 Release:	1
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://downloads.sourceforge.net/reiser4/reiser4-utils/reiser4progs/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/reiser4/%{name}-%{version}.tar.gz
 # Source0-md5:	1fe5dce409277d8209ea28f32c6b199f
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-libaal.patch
 Patch2:		%{name}-libreiser4-no-libmisc.patch
 Patch3:		%{name}-am.patch
 Patch4:		%{name}-format-security.patch
-URL:		http://www.namesys.com/
+URL:		http://sourceforge.net/projects/reiser4/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libaal-devel >= 1.0.5
+BuildRequires:	libaal-devel >= 1.0.6
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	libuuid-devel
 BuildRequires:	readline-devel
-Requires:	libaal >= 1.0.5
+Requires:	libaal >= 1.0.6
 Obsoletes:	reiserfs-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -67,7 +67,7 @@ Summary:	Header files for reiser4progs libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek reiser4progs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libaal-devel >= 1.0.5
+Requires:	libaal-devel >= 1.0.6
 
 %description devel
 Header files for reiser4progs libraries.
@@ -99,8 +99,8 @@ Statyczne biblioteki reiser4progs.
 %build
 %{__libtoolize}
 %{__aclocal}
-%{__autoheader}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	%{!?debug:--disable-debug}
@@ -109,6 +109,9 @@ Statyczne biblioteki reiser4progs.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}
+
+# don't run ldconfig on install
+> run-ldconfig
 
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
