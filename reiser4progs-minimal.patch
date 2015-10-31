@@ -1,0 +1,20 @@
+In case of libreiser4-minimal, disable node41_sync() as it isn't used in function table
+and references node40_sync(), which is disabled in minimal build.
+--- reiser4progs-1.1.0/plugin/node/node41/node41.c.orig	2015-08-23 19:14:57.000000000 +0200
++++ reiser4progs-1.1.0/plugin/node/node41/node41.c	2015-10-31 21:49:54.038318250 +0100
+@@ -74,13 +74,13 @@
+ 	return entity;
+ }
+ 
++#ifndef ENABLE_MINIMAL
++
+ errno_t node41_sync(reiser4_node_t *entity) {
+ 	csum_node41(entity, 0 /* update */);
+ 	return node40_sync(entity);
+ }
+ 
+-#ifndef ENABLE_MINIMAL
+-
+ /* Returns maximal size of item possible for passed node instance */
+ static uint16_t node41_maxspace(reiser4_node_t *entity) {
+ 	aal_assert("edward-8", entity != NULL);
