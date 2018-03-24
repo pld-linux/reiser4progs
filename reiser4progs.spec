@@ -5,7 +5,7 @@ Summary(ru.UTF-8):	Утилиты для работы с файловой сис
 Summary(uk.UTF-8):	Утиліти для роботы з файловою системою Reiser4
 Name:		reiser4progs
 Version:	1.1.0
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/reiser4/%{name}-%{version}.tar.gz
