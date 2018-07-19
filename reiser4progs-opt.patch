@@ -1,5 +1,5 @@
---- reiser4progs-1.0.2/configure.in.orig	2004-10-21 19:38:08.000000000 +0200
-+++ reiser4progs-1.0.2/configure.in	2004-10-24 22:08:44.861671296 +0200
+--- reiser4progs-1.2.1/configure.ac.orig	2004-10-21 19:38:08.000000000 +0200
++++ reiser4progs-1.2.1/configure.ac	2004-10-24 22:08:44.861671296 +0200
 @@ -576,13 +576,8 @@
  
  CFLAGS="$CFLAGS -W -Wall"

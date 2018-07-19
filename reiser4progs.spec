@@ -4,12 +4,12 @@ Summary(pt_BR.UTF-8):	Este pacote contém os utilitários para manipulação do 
 Summary(ru.UTF-8):	Утилиты для работы с файловой системой Reiser4
 Summary(uk.UTF-8):	Утиліти для роботы з файловою системою Reiser4
 Name:		reiser4progs
-Version:	1.1.0
-Release:	3
+Version:	1.2.1
+Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/reiser4/%{name}-%{version}.tar.gz
-# Source0-md5:	4abfda040a0ef152bc2f42152e247a5e
+# Source0-md5:	5c3af8644a4ab291fd59ccff6539a1ed
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-libaal.patch
 Patch2:		%{name}-libreiser4-no-libmisc.patch
@@ -119,7 +119,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/%{_lib}
-mv -f $RPM_BUILD_ROOT%{_libdir}/lib*.so.* $RPM_BUILD_ROOT/%{_lib}
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/lib*.so.* $RPM_BUILD_ROOT/%{_lib}
 for f in libreiser4 libreiser4-minimal librepair; do
 	lib=$(cd $RPM_BUILD_ROOT/%{_lib}; echo $f-1.0.so.*.*.*)
 	ln -sf /%{_lib}/$lib $RPM_BUILD_ROOT%{_libdir}/$f.so
@@ -134,18 +134,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 # COPYING contains information other than GPL text
-%doc AUTHORS BUGS COPYING CREDITS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS BUGS COPYING CREDITS ChangeLog README THANKS TODO
 %attr(755,root,root) %{_sbindir}/debugfs.reiser4
 %attr(755,root,root) %{_sbindir}/fsck.reiser4
 %attr(755,root,root) %{_sbindir}/make_reiser4
 %attr(755,root,root) %{_sbindir}/measurefs.reiser4
 %attr(755,root,root) %{_sbindir}/mkfs.reiser4
-%attr(755,root,root) /%{_lib}/libreiser4-1.1.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libreiser4-1.1.so.0
-%attr(755,root,root) /%{_lib}/libreiser4-minimal-1.1.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libreiser4-minimal-1.1.so.0
-%attr(755,root,root) /%{_lib}/librepair-1.1.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/librepair-1.1.so.0
+%attr(755,root,root) /%{_lib}/libreiser4-1.2.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libreiser4-1.2.so.1
+%attr(755,root,root) /%{_lib}/libreiser4-minimal-1.2.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libreiser4-minimal-1.2.so.1
+%attr(755,root,root) /%{_lib}/librepair-1.2.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/librepair-1.2.so.1
 %{_mandir}/man8/debugfs.reiser4.8*
 %{_mandir}/man8/fsck.reiser4.8*
 %{_mandir}/man8/measurefs.reiser4.8*
