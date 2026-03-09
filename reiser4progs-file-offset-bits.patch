@@ -1,0 +1,13 @@
+--- reiser4progs-1.2.1/configure.ac.orig	2024-01-01 00:00:00.000000000 +0000
++++ reiser4progs-1.2.1/configure.ac	2024-01-01 00:00:00.000000000 +0000
+@@ -422,7 +422,9 @@
+ 	ac_cv_sys_file_offset_bits=64
+ fi
+
+-GENERIC_CFLAGS="$GENERIC_CFLAGS -D_FILE_OFFSET_BITS=${ac_cv_sys_file_offset_bits}"
++if test -n "${ac_cv_sys_file_offset_bits}" -a x${ac_cv_sys_file_offset_bits} != xunknown; then
++	GENERIC_CFLAGS="$GENERIC_CFLAGS -D_FILE_OFFSET_BITS=${ac_cv_sys_file_offset_bits}"
++fi
+
+ AC_CHECK_SIZEOF(off_t, 64, [
+ 	#include <stdio.h>

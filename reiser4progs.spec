@@ -5,7 +5,7 @@ Summary(ru.UTF-8):	Утилиты для работы с файловой сис
 Summary(uk.UTF-8):	Утиліти для роботы з файловою системою Reiser4
 Name:		reiser4progs
 Version:	1.2.1
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/reiser4/%{name}-%{version}.tar.gz
@@ -16,6 +16,7 @@ Patch2:		%{name}-libreiser4-no-libmisc.patch
 Patch3:		%{name}-am.patch
 Patch4:		%{name}-format-security.patch
 Patch5:		%{name}-minimal.patch
+Patch6:		%{name}-file-offset-bits.patch
 URL:		http://sourceforge.net/projects/reiser4/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -97,6 +98,7 @@ Statyczne biblioteki reiser4progs.
 %patch -P3 -p1
 %patch -P4 -p1
 %patch -P5 -p1
+%patch -P6 -p1
 
 %build
 %{__libtoolize}
@@ -105,6 +107,7 @@ Statyczne biblioteki reiser4progs.
 %{__autoheader}
 %{__automake}
 %configure \
+	CFLAGS="%{rpmcflags} -std=gnu89 -DWANT_OBSOLETE_TYPEDEFS" \
 	%{!?debug:--disable-debug}
 %{__make}
 
